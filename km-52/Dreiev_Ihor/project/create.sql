@@ -1,0 +1,36 @@
+CREATE TABLE User
+(
+  name VARCHAR(40) NOT NULL,
+  id INT NOT NULL,
+  password_hash VARCHAR(100) NOT NULL,
+  email VARCHAR(40) NOT NULL,
+);
+ALTER TABLE User ADD PRIMARY KEY (id);
+ALTER TABLE User ADD UNIQUE (email); 
+
+CREATE TABLE Question_set
+(
+  id INT NOT NULL,
+  text VARCHAR(200) NOT NULL,
+  user_id INT NOT NULL,
+);
+ALTER TABLE Question_set ADD PRIMARY KEY (id);
+ALTER TABLE Question_set ADD FOREIGN KEY (user_id) REFERENCES User(id);
+
+CREATE TABLE Question
+(
+  id INT NOT NULL,
+  text VARCHAR(200) NOT NULL,
+  set_id INT NOT NULL,
+);
+ALTER TABLE Question ADD PRIMARY KEY (id);
+ALTER TABLE Question ADD FOREIGN KEY (set_id) REFERENCES Question_set(id);
+
+CREATE TABLE Option
+(
+  id INT NOT NULL,
+  text VARCHAR(200) NOT NULL,
+  question_id INT NOT NULL,
+);
+ALTER TABLE Option ADD PRIMARY KEY (id);
+ALTER TABLE Option ADD FOREIGN KEY (question_id) REFERENCES Question(id);
