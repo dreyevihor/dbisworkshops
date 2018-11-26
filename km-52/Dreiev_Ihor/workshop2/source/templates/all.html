@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Question</h1>
+    <table>
+        {% for dict_item in Q %}
+        <tr><td>{{dict_item}}</td><td>{{Q[dict_item]}}</td></tr>
+        {% endfor %}
+    </table>
+
+
+    <br />
+    <br />
+
+    <h1>Option</h1>
+    <table>
+        {% for dict_item in O %}
+        <tr><td>{{dict_item}}</td><td>{{O[dict_item]}}</td></tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
